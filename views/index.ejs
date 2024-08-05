@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Bogger</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Blog Bogger</h1>
+        <nav>
+            <form action="/create" method="POST">
+                <button type="submit">Create a New Blog</button>
+            </form>
+            <form action="/edit" method="POST">
+                <button type="submit">Edit Your Blog</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        
+        <% if(locals.msgedit){ %>
+            <div class="message"><%= msgedit %></div>
+        <% } %>
+
+        <ul class="blog-list">
+            <% blogs.forEach(blog => { %>
+                <li class="blog-item">
+                    <h2><%= blog.tit %></h2>
+                    <p><%= blog.cont %></p>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Blog Bogger. All rights reserved.</p>
+    </footer>
+</body>
+</html>

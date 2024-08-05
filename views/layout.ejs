@@ -1,0 +1,31 @@
+<!-- layout.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Blog Bogger</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Blog Bogger</h1>
+        <nav>
+            <form action="/create" method="POST">
+                <button type="submit">Create a New Blog</button>
+            </form>
+            <form action="/edit" method="POST">
+                <button type="submit">Edit Your Blog</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Blog Bogger By NobleChicken97</p>
+    </footer>
+</body>
+</html>

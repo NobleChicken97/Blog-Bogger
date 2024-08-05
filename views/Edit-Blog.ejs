@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <style>
+        .centered-heading {
+            text-align: center;
+            margin-bottom: 20px; /* Adjust margin if needed */
+        }
+    </style>
+    
+</head>
+<body>
+    <h1 class="centered-heading" >Edit Your Blog</h1>
+
+    <% if (locals.msg) { %>
+        <div class="message">
+            <strong><%= msg %></strong>
+        </div>
+    <% } else if (blog) { %>
+        <div class="form-container">
+            <h2>Edit Blog: <%= blog.tit %></h2>
+            <form action="/update-blog" method="POST">
+                <input type="hidden" name="oldTitle" value="<%= blog.tit %>">
+                <input type="text" name="newTitle" value="<%= blog.tit %>" placeholder="New Title">
+                <textarea name="newContent" placeholder="New Content"><%= blog.cont %></textarea>
+                <input type="submit" value="Update Blog">
+            </form>
+        </div>
+        
+        <div class="button-container">
+            <form action="/delete" method="POST">
+                <input type="hidden" name="Title" value="<%= blog.tit %>">
+                <input type="submit" value="Delete This Blog">
+            </form>
+        </div>
+    <% } else { %>
+        <div class="form-container">
+            <h2>Find Blog to Edit</h2>
+            <form action="/Edit-Blog" method="POST">
+                <input type="text" name="Title2" placeholder="Enter Blog Title">
+                <input type="submit" value="Find My Blog">
+            </form>
+        </div>
+    <% } %>
+
+    <div class="button-container">
+        <a href="/" class="button">Back to Home</a>
+    </div>
+</body>
+</html>
